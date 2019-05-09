@@ -1,0 +1,992 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="关于mkdocs-material支持的markdown语法，包括传统语法和扩展语法">
+      
+      
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/lottery/">
+      
+      
+        <meta name="author" content="cyent">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>彩票项目部署 - markdown语法详解(基于mkdocs-material) - cyent笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://cyent.github.io/markdown-with-mkdocs-material/" title="markdown语法详解(基于mkdocs-material) - cyent笔记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              markdown语法详解(基于mkdocs-material) - cyent笔记
+            </span>
+            <span class="md-header-nav__topic">
+              彩票项目部署
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/cyent/markdown-with-mkdocs-material/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    cyent/markdown-with-mkdocs-material
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://cyent.github.io/markdown-with-mkdocs-material/" title="markdown语法详解(基于mkdocs-material) - cyent笔记" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    markdown语法详解(基于mkdocs-material) - cyent笔记
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/cyent/markdown-with-mkdocs-material/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    cyent/markdown-with-mkdocs-material
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="一. 介绍" class="md-nav__link">
+      一. 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      二. 安装
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        二. 安装
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../install/local.md" title="1. 本地环境搭建" class="md-nav__link">
+      1. 本地环境搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../install/github-pages.md" title="2. 发布至GitHub Pages" class="md-nav__link">
+      2. 发布至GitHub Pages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../install/http-server.md" title="3. 发布至自己的HTTP Server" class="md-nav__link">
+      3. 发布至自己的HTTP Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 语法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 语法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../syntax/main.md" title="1. 语法总览" class="md-nav__link">
+      1. 语法总览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../syntax/headline.md" title="2. 标题" class="md-nav__link">
+      2. 标题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../syntax/paragraph.md" title="3. 段落" class="md-nav__link">
+      3. 段落
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lottery" title="Lottery (依赖库)：" class="md-nav__link">
+    Lottery (依赖库)：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lotteryapi" title="LotteryApi (依赖库)：" class="md-nav__link">
+    LotteryApi (依赖库)：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lotterylib" title="LotteryLib (依赖库)：" class="md-nav__link">
+    LotteryLib (依赖库)：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lotterymis" title="LotteryMis (依赖库)：" class="md-nav__link">
+    LotteryMis (依赖库)：
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cyent/markdown-with-mkdocs-material/edit/master/docs/lottery.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">彩票项目部署<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p><a href="lottery#%E5%BD%A9%E7%A5%A8%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2_lottery-%E4%BE%9D%E8%B5%96%E5%BA%93">Lottery</a></p>
+</li>
+<li>
+<p><a href="lottery#%E5%BD%A9%E7%A5%A8%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2_lotteryapi-%E4%BE%9D%E8%B5%96%E5%BA%93">LotteryApi</a></p>
+</li>
+<li>
+<p><a href="lottery#%E5%BD%A9%E7%A5%A8%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2_lotterylib-%E4%BE%9D%E8%B5%96%E5%BA%93">LotteryLib</a></p>
+</li>
+<li>
+<p><a href="lottery#%E5%BD%A9%E7%A5%A8%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2_lotterymis-%E4%BE%9D%E8%B5%96%E5%BA%93">LotteryMis</a></p>
+</li>
+</ul>
+<h4 id="lottery"><strong>Lottery</strong> (依赖库)：<a class="headerlink" href="#lottery" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>主要修改以下文件：</p>
+</li>
+<li>
+<p>Lottery/conf/rls/application.ini (定义 memcached 服务的相关配置)</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span>  <span class="p">[</span><span class="n">product</span><span class="p">]</span>
+<span class="n">application</span><span class="p">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">APP_PATH</span>
+<span class="n">application</span><span class="p">.</span><span class="n">library</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/library&quot;</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">catchException</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">throwException</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="p">;</span><span class="n">smarty</span> <span class="err">配置</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">template_dir</span> <span class="o">=</span> <span class="n">APP_PATH</span> <span class="s">&quot;/views/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">compile_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/templates_c/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/cache/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="s">&quot;tpl&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">plugins_dir</span> <span class="o">=</span> <span class="n">APP_PATH</span> <span class="s">&quot;/views/plugin/&quot;</span>
+
+
+<span class="p">;</span><span class="n">cookie</span> <span class="err">配置</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">domain</span> <span class="o">=</span> <span class="s">&quot;.p2peye.com&quot;</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">tid</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">TYID</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="err">日志配置</span>
+<span class="n">log</span><span class="p">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">ui</span><span class="p">.</span><span class="n">log</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="n">discuz配置</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_prefix</span> <span class="o">=</span> <span class="s">&quot;A4gK_&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_path</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_domain</span> <span class="o">=</span> <span class="s">&quot;.p2peye.com&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">uckey</span> <span class="o">=</span> <span class="s">&quot;e1zc3d7fDcQ73aXf98v1aaw7R1D1acv2Teza4efevbwfv7d631Zcrdg2W8TcKbVb&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">authkey</span> <span class="o">=</span> <span class="s">&quot;e21217j6ZsoeRAf0&quot;</span><span class="p">;</span>
+
+<span class="p">;</span><span class="n">upload</span> <span class="err">上传目录配置</span>
+<span class="n">upload</span><span class="p">.</span><span class="n">rootSrc</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/upload&quot;</span>
+<span class="n">upload</span><span class="p">.</span><span class="n">shareSrc</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/upload/share&quot;</span>
+
+
+<span class="p">;</span><span class="nl">local</span> <span class="p">:</span> <span class="err">本地配置</span>
+<span class="p">;</span><span class="nl">test</span> <span class="p">:</span> <span class="err">测试环境配置</span>
+<span class="p">;</span><span class="nl">rls</span> <span class="p">:</span> <span class="err">发布配置</span>
+<span class="p">;</span><span class="n">memcached</span>
+<span class="p">;</span><span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.192&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.93&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="s">&quot;12306&quot;</span>
+</pre></div>
+
+<h4 id="lotteryapi"><strong>LotteryApi</strong> (依赖库)：<a class="headerlink" href="#lotteryapi" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>主要修改以下文件：</p>
+</li>
+<li>
+<p>LotteryApi/conf/rls/application.ini (定义 memcached 服务的相关配置)</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">product</span><span class="p">]</span>
+<span class="n">application</span><span class="p">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">APP_PATH</span>
+<span class="n">application</span><span class="p">.</span><span class="n">library</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/library&quot;</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">catchException</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">throwException</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="p">;</span><span class="n">smarty</span> <span class="err">配置</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">template_dir</span> <span class="o">=</span> <span class="n">APP_PATH</span> <span class="s">&quot;/views/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">compile_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/templates_c/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/cache/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="s">&quot;tpl&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">plugins_dir</span> <span class="o">=</span> <span class="n">APP_PATH</span> <span class="s">&quot;/views/plugin/&quot;</span>
+
+
+<span class="p">;</span><span class="n">cookie</span> <span class="err">配置</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">domain</span> <span class="o">=</span> <span class="s">&quot;.p2peye.com&quot;</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">tid</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">TYID</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="err">日志配置</span>
+<span class="n">log</span><span class="p">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">ui</span><span class="p">.</span><span class="n">log</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="n">discuz配置</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_prefix</span> <span class="o">=</span> <span class="s">&quot;A4gK_&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_path</span> <span class="o">=</span> <span class="s">&quot;/&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">cookie_domain</span> <span class="o">=</span> <span class="s">&quot;.p2peye.com&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">uckey</span> <span class="o">=</span> <span class="s">&quot;e1zc3d7fDcQ73aXf98v1aaw7R1D1acv2Teza4efevbwfv7d631Zcrdg2W8TcKbVb&quot;</span>
+<span class="n">discuz</span><span class="p">.</span><span class="n">authkey</span> <span class="o">=</span> <span class="s">&quot;e21217j6ZsoeRAf0&quot;</span><span class="p">;</span>
+
+<span class="p">;</span><span class="n">upload</span> <span class="err">上传目录配置</span>
+<span class="n">upload</span><span class="p">.</span><span class="n">rootSrc</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/upload&quot;</span>
+<span class="n">upload</span><span class="p">.</span><span class="n">shareSrc</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/upload/share&quot;</span>
+
+
+<span class="p">;</span><span class="nl">local</span> <span class="p">:</span> <span class="err">本地配置</span>
+<span class="p">;</span><span class="nl">test</span> <span class="p">:</span> <span class="err">测试环境配置</span>
+<span class="p">;</span><span class="nl">rls</span> <span class="p">:</span> <span class="err">发布配置</span>
+<span class="p">;</span><span class="n">memcached</span>
+<span class="p">;</span><span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.192&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.91&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="s">&quot;12306&quot;</span>
+</pre></div>
+
+<h4 id="lotterylib"><strong>LotteryLib</strong> (依赖库)：<a class="headerlink" href="#lotterylib" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>主要修改以下文件：</p>
+</li>
+<li>
+<p>LotteryLib/conf/rls/cache.php (memcache配置)</p>
+</li>
+</ul>
+<p><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> *</span>
+<span class="sd"> * @author Abel</span>
+<span class="sd"> * email:abel.zhou@hotmail.com</span>
+<span class="sd"> * 2014-9-23</span>
+<span class="sd"> * UTF-8</span>
+<span class="sd"> */</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
+                <span class="s1">&#39;memcache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span> <span class="p">(</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                <span class="p">)</span> <span class="p">,</span>
+                <span class="s1">&#39;memcached&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span> <span class="p">(</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.92&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12306&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12307&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                                <span class="k">array</span> <span class="p">(</span>
+                                                <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.93&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;12308&#39;</span> <span class="p">,</span>
+                                                <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;10&#39;</span>
+                                <span class="p">),</span>
+                <span class="p">)</span>
+<span class="p">);</span>
+<span class="k">return</span> <span class="nv">$cache</span><span class="p">;</span>
+</pre></div>
+  - LotteryLib/conf/rls/db.php (mysql配置)</p>
+<p><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> *</span>
+<span class="sd"> * @author Abel</span>
+<span class="sd"> * email:abel.zhou@hotmail.com</span>
+<span class="sd"> * 2014-9-22</span>
+<span class="sd"> * UTF-8</span>
+<span class="sd"> */</span>
+<span class="c1">// Lottery</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;lottery&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;writer&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.200&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_write&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;reader&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.100&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">//lottery_mis</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;lottery_mis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;writer&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.200&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_write&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_mis&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;reader&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.100&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_mis&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">//lottery_message</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;lottery_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;writer&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.200&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_write&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_message&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;reader&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.100&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_message&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">//lottery_number</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;lottery_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;writer&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.200&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_write&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_number&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;reader&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.100&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3357&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mysql_read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;lottery_number&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;utf8&#39;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$db</span><span class="p">;</span>
+</pre></div>
+  - LotteryLib/conf/rls/es.php (es配置)</p>
+<p><div class="codehilite"><pre><span></span><span class="x">  </span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> *</span>
+<span class="sd"> * 2018-8-3</span>
+<span class="sd"> * UTF-8</span>
+<span class="sd"> */</span>
+<span class="nv">$config</span> <span class="p">[</span><span class="s1">&#39;local&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;192.168.2.10:9200&#39;</span>
+<span class="p">);</span>
+
+<span class="nv">$config</span> <span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;127.0.0.1:9200&#39;</span>
+<span class="p">);</span>
+
+<span class="nv">$config</span> <span class="p">[</span><span class="s1">&#39;rls&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;192.168.2.250:9200&#39;</span>
+<span class="p">);</span>
+<span class="k">return</span> <span class="nv">$config</span><span class="p">;</span>
+</pre></div>
+  - LotteryLib/conf/rls/grpc.php (图片识别)</p>
+<p><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;ocr&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.2.57&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;50051&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;opts&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;credentials&#39;</span> <span class="o">=&gt;</span> <span class="nx">Grpc\ChannelCredentials</span><span class="o">::</span><span class="na">createInsecure</span><span class="p">(),</span>
+        <span class="p">),</span>
+        <span class="s1">&#39;channel&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+  - LotteryLib/conf/rls/push.php</p>
+<p><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cp_push&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;c6ca75b809ef6b97a70f0867&quot;</span><span class="p">,</span> <span class="s2">&quot;secret&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;a00ddf119173c6b1d1651b30&quot;</span><span class="p">),</span><span class="c1">//出彩极光</span>
+    <span class="s2">&quot;flymepush&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;119240&quot;</span><span class="p">,</span> <span class="s2">&quot;secret&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ae4777526c3e44a2b197936ecb3162c1&quot;</span><span class="p">),</span><span class="c1">//魅族</span>
+    <span class="s2">&quot;huaweipush&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;100722725&quot;</span><span class="p">,</span> <span class="s2">&quot;secret&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;52d9fb19b784a548842d2b20751b5ff9d96ee2bb13ab9edaef4e61b042f3af5d&quot;</span><span class="p">),</span><span class="c1">//华为</span>
+    <span class="s2">&quot;mipush&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;secret&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mudXrZWpLJ0F0aInFGLc7w==&quot;</span><span class="p">),</span><span class="c1">//小米</span>
+<span class="c1">//    &quot;huaweipush&quot; =&gt; array(&quot;key&quot; =&gt; &quot;100669369&quot;, &quot;secret&quot; =&gt; &quot;fd78b3031ef810ea8f8ef41b5676b032&quot;),//华为</span>
+<span class="c1">//    &quot;mipush&quot; =&gt; array(&quot;key&quot; =&gt; &quot;&quot;, &quot;secret&quot; =&gt; &quot;aHY/rDBUA7mSO6AoAFrNbg==&quot;),//华为</span>
+<span class="c1">//    &quot;oppopush&quot; =&gt; array(&quot;key&quot; =&gt; &quot;&quot;, &quot;secret&quot; =&gt; &quot;&quot;),//OPPO</span>
+<span class="p">);</span>
+</pre></div>
+  - LotteryLib/conf/rls/redis.php (redis配置)</p>
+<p><div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> *</span>
+<span class="sd"> */</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;host&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;192.168.2.91&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;port&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;16379&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;auth&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;&#39;</span>
+<span class="p">);</span>
+<span class="k">return</span> <span class="nv">$config</span><span class="p">;</span>
+</pre></div>
+  - LotteryLib/conf/rls/swoole.php</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;local&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="p">);</span>
+
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="p">);</span>
+
+<span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;rls&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="p">);</span>
+</pre></div>
+
+<h4 id="lotterymis"><strong>LotteryMis</strong> (依赖库)：<a class="headerlink" href="#lotterymis" title="Permanent link">&para;</a></h4>
+<ul>
+<li>主要修改以下文件：</li>
+<li>LotteryMis/conf/rls/mis.ini(mis配置)</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="n">common</span><span class="p">]</span>
+<span class="n">application</span><span class="p">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">APPLICATION_DIRECTORY</span>
+<span class="n">application</span><span class="p">.</span><span class="n">library</span> <span class="o">=</span> <span class="n">APPLICATION_DIRECTORY</span> <span class="s">&quot;/../library/&quot;</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">catchException</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="n">application</span><span class="p">.</span><span class="n">dispatcher</span><span class="p">.</span><span class="n">throwException</span> <span class="o">=</span> <span class="n">TRUE</span>
+
+
+<span class="p">;</span><span class="err">路由配置，顺序很重要</span>
+<span class="p">;</span><span class="err">首页</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">licaiindex</span><span class="p">.</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;rewrite&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">licaiindex</span><span class="p">.</span><span class="n">match</span><span class="o">=</span><span class="s">&quot;licai.html&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">licaiindex</span><span class="p">.</span><span class="n">route</span><span class="p">.</span><span class="n">controller</span><span class="o">=</span><span class="s">&quot;Licai&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">licaiindex</span><span class="p">.</span><span class="n">route</span><span class="p">.</span><span class="n">action</span><span class="o">=</span><span class="s">&quot;index&quot;</span>
+
+<span class="p">;</span><span class="err">修改个人密码</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;rewrite&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">match</span><span class="o">=</span><span class="s">&quot;editPassword.html&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">route</span><span class="p">.</span><span class="n">controller</span><span class="o">=</span><span class="s">&quot;user&quot;</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">Password</span><span class="p">.</span><span class="n">route</span><span class="p">.</span><span class="n">action</span><span class="o">=</span><span class="s">&quot;editPassword&quot;</span>
+<span class="p">[</span><span class="nl">product</span> <span class="p">:</span> <span class="n">common</span><span class="p">]</span>
+<span class="p">;</span><span class="err">图片上传配置</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">bankIcon</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">bank_icons</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">ForumPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">forum</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">recommendedPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">recommended</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">companyPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">company</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">topicPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">topic</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">picPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">pic</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">teamPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">team</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">iconPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">ad</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">ad</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">tea</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">tea</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">managerHead</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">manager</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">MobilePath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">mobile</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadFile</span><span class="p">.</span><span class="n">sqlFile</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sql</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadFile</span><span class="p">.</span><span class="n">excelFile</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">excel</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">appwall</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">yx</span><span class="o">/</span><span class="n">sites</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">attachment</span><span class="o">/</span><span class="n">appwall</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">HomeNewsPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">homenews</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">AdvertisementPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">advertisement</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">FriendslinkPath</span><span class="o">=</span><span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">friendslink</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">infoPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">SpiderPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">spider</span><span class="o">/</span><span class="err">&#39;</span>
+
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">OnlineActivityPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">online</span><span class="o">/</span><span class="err">&#39;</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">AppAdvertisementPath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">app_advertisement</span><span class="o">/</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="mi">20170718</span>
+<span class="n">uploadImg</span><span class="p">.</span><span class="n">MagazinePath</span> <span class="o">=</span> <span class="n">ROOT_PATH</span><span class="err">&#39;</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">p2peye</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="n">magazine</span><span class="o">/</span><span class="err">&#39;</span>
+
+<span class="p">;</span><span class="n">cookie</span> <span class="err">配置</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">domain</span> <span class="o">=</span> <span class="s">&quot;.p2peye.com&quot;</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;PID&quot;</span>
+<span class="n">cookie</span><span class="p">.</span><span class="n">city</span> <span class="o">=</span> <span class="s">&quot;PCITY&quot;</span>
+
+<span class="p">;</span><span class="err">日志配置</span>
+<span class="n">log</span><span class="p">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">ROOT_PATH</span>  <span class="err">&#39;</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">mis</span><span class="p">.</span><span class="n">log</span><span class="err">&#39;</span>
+<span class="n">log</span><span class="p">.</span><span class="n">level</span> <span class="o">=</span> <span class="s">&quot;0xFF&quot;</span>
+
+<span class="n">db</span><span class="p">.</span><span class="n">ip</span> <span class="o">=</span> <span class="s">&quot;192.168.2.200&quot;</span>
+<span class="n">db</span><span class="p">.</span><span class="n">user</span> <span class="o">=</span> <span class="s">&quot;mysql_write&quot;</span>
+<span class="n">db</span><span class="p">.</span><span class="n">password</span> <span class="o">=</span> <span class="s">&quot;123.com@cn&quot;</span>
+<span class="n">db</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="s">&quot;3357&quot;</span>
+
+<span class="p">;</span><span class="n">memcached</span> <span class="err">配置</span>
+<span class="p">;</span><span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.192&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">&quot;192.168.2.93&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="s">&quot;12306&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">city_key</span> <span class="o">=</span> <span class="s">&quot;MEMCACHED_CITY&quot;</span>
+<span class="n">memcached</span><span class="p">.</span><span class="n">bank_key</span> <span class="o">=</span> <span class="s">&quot;MEMCACHED_BANK&quot;</span>
+
+<span class="p">;</span><span class="n">smarty</span> <span class="err">配置</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">template_dir</span> <span class="o">=</span> <span class="n">APPLICATION_DIRECTORY</span> <span class="s">&quot;/views/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">compile_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/templates_c/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">ROOT_PATH</span> <span class="s">&quot;/logs/smarty/cache/&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="s">&quot;tpl&quot;</span>
+<span class="n">smarty</span><span class="p">.</span><span class="n">plugins_dir</span> <span class="o">=</span> <span class="n">APPLICATION_DIRECTORY</span> <span class="s">&quot;/views/plugin/&quot;</span>
+
+<span class="p">;</span><span class="err">登录</span><span class="n">token</span>
+<span class="n">logon</span><span class="p">.</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;wdty2018&quot;</span>
+</pre></div>
+
+<ul>
+<li><a href="lottery#%E5%BD%A9%E7%A5%A8%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2">返回顶部</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/cyent" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../js/extra.js"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
