@@ -1,0 +1,680 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="huningfei">
+      
+      
+        <link rel="canonical" href="https://cyent.github.io/markdown-with-mkdocs-material/elasticsearch/install/">
+      
+      
+        <meta name="author" content="cyent">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>es6.6安装单台环境 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#es66" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://cyent.github.io/markdown-with-mkdocs-material/" title="笔记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              笔记
+            </span>
+            <span class="md-header-nav__topic">
+              es6.6安装单台环境
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/cyent/markdown-with-mkdocs-material/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    cyent/markdown-with-mkdocs-material
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://cyent.github.io/markdown-with-mkdocs-material/" title="笔记" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    笔记
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/cyent/markdown-with-mkdocs-material/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    cyent/markdown-with-mkdocs-material
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="一. 介绍" class="md-nav__link">
+      一. 介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      二. 安装
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        二. 安装
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/local.md" title="1. 本地环境搭建" class="md-nav__link">
+      1. 本地环境搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/github-pages.md" title="2. 发布至GitHub Pages" class="md-nav__link">
+      2. 发布至GitHub Pages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/http-server.md" title="3. 发布至自己的HTTP Server" class="md-nav__link">
+      3. 发布至自己的HTTP Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      三. 语法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        三. 语法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/main.md" title="1. 语法总览" class="md-nav__link">
+      1. 语法总览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/headline.md" title="2. 标题" class="md-nav__link">
+      2. 标题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/paragraph.md" title="3. 段落" class="md-nav__link">
+      3. 段落
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java" title="安装java环境" class="md-nav__link">
+    安装java环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#es" title="安装es" class="md-nav__link">
+    安装es
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="启动方法" class="md-nav__link">
+    启动方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="启动报错处理" class="md-nav__link">
+    启动报错处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#head" title="安装head插件" class="md-nav__link">
+    安装head插件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="浏览器验证" class="md-nav__link">
+    浏览器验证
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cyent/markdown-with-mkdocs-material/edit/master/docs/elasticsearch/install.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="es66">es6.6安装单台环境<a class="headerlink" href="#es66" title="Permanent link">&para;</a></h1>
+<h4 id="java">安装java环境<a class="headerlink" href="#java" title="Permanent link">&para;</a></h4>
+<ul>
+<li>jdk安装，最好是在1.8以上，下面的路径根据实际情况而定</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">解压</span><span class="err">：</span><span class="n">tar</span> <span class="n">zxvf</span> <span class="n">jdk</span><span class="o">-</span><span class="mi">8</span><span class="n">u60</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">i586</span><span class="o">.</span><span class="na">tar</span><span class="o">.</span><span class="na">gz</span>
+  <span class="n">移动</span> <span class="err">：</span>  <span class="n">sudo</span>  <span class="n">mv</span> <span class="n">jdk1</span><span class="mf">.8.0_60</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span>
+<span class="n">sudo</span>   <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="na">d</span><span class="o">/</span><span class="n">java</span><span class="o">.</span><span class="na">sh加入这几行</span>
+<span class="n">JAVA_HOME</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span>
+<span class="n">JAVA_BIN</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">bin</span>
+<span class="n">JRE_HOME</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">jre</span>
+<span class="n">PATH</span><span class="o">=</span><span class="n">$PATH</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">bin</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">bin</span>
+<span class="n">CLASSPATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">lib</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.8.0_60</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">charsets</span><span class="o">.</span><span class="na">jar</span>
+
+<span class="n">初始化</span>  <span class="n">source</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="na">d</span><span class="o">/</span><span class="n">java</span><span class="o">.</span><span class="na">sh</span>
+
+<span class="n">最后运行</span><span class="err">：</span><span class="n">java</span> <span class="o">-</span><span class="n">version</span> <span class="n">会出来版本信息</span>
+</pre></div>
+
+<h4 id="es">安装es<a class="headerlink" href="#es" title="Permanent link">&para;</a></h4>
+<ul>
+<li>下载，解压，并更改配置文件</li>
+</ul>
+<div class="codehilite"><pre><span></span>grep -v <span class="s2">&quot;^#&quot;</span> elasticsearch.yml <span class="p">|</span>grep -v <span class="s2">&quot;^</span>$<span class="s2">&quot;</span>
+cluster.name: <span class="nb">test</span> <span class="c1"># 集群名称</span>
+node.name: node-1 <span class="c1"># 节点名</span>
+path.data: /home/yx/server/elasticsearch/data <span class="c1">#数据目录</span>
+path.logs: /home/yx/server/elasticsearch/logs <span class="c1"># 日志目录</span>
+bootstrap.memory_lock: <span class="nb">false</span>
+bootstrap.system_call_filter: <span class="nb">false</span> <span class="c1"># 为了解决启动失败添加的</span>
+network.host: <span class="m">0</span>.0.0.0  <span class="c1">#本机ip</span>
+http.port: <span class="m">9200</span> <span class="c1">#端口号</span>
+http.cors.enabled: <span class="nb">true</span>   <span class="c1"># 是为了head插件可以访问es</span>
+http.cors.allow-origin: <span class="s2">&quot;*&quot;</span> <span class="c1"># 是为了head插件可以访问es</span>
+</pre></div>
+
+<h4 id="_1">启动方法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>启动</li>
+</ul>
+<div class="codehilite"><pre><span></span>/home/yx/server/elasticsearch/bin/elasticsearch <span class="c1">#前台启动</span>
+/home/yx/server/elasticsearch/bin/elasticsearch -d <span class="c1">#后台启动</span>
+</pre></div>
+
+<h4 id="_2">启动报错处理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]</li>
+</ul>
+<p><div class="codehilite"><pre><span></span>解决方案： 切到root 用户：进入到security目录下的limits.conf；执行命令
+vim /etc/security/limits.conf 在文件的末尾添加下面的参数值：
+
+
+* soft nofile <span class="m">65536</span>
+* hard nofile <span class="m">131072</span>
+* soft nproc <span class="m">4096</span>
+* hard nproc <span class="m">4096</span>
+前面的*符号必须带上，用户重新登录就可以了。执行完成后可以使用命令 <span class="nb">ulimit</span> -n 查看进程数 。
+<span class="nb">ulimit</span> -Hu
+<span class="nb">ulimit</span> -Su
+</pre></div>
+- [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</p>
+<div class="codehilite"><pre><span></span>解决方案：切换到root用户修改配置sysctl.conf
+sudo vim /etc/sysctl.conf
+增加配置值： vm.max_map_count<span class="o">=</span><span class="m">655360</span>
+sudo sysctl -p
+</pre></div>
+
+<ul>
+<li>ERROR: bootstrap checks failed
+system call filters failed to install; check the logs and fix your configuration or disable system call filters at your own risk</li>
+</ul>
+<div class="codehilite"><pre><span></span>问题原因：因为Centos6不支持SecComp，而ES5.2.1默认bootstrap.system_call_filter为true进行检测，所以导致检测失败，失败后直接导致ES不能启动。详见 ：https://github.com/elastic/elasticsearch/issues/22899
+
+
+
+解决方法：在elasticsearch.yml中配置bootstrap.system_call_filter为false，注意要在Memory下面:
+bootstrap.memory_lock: <span class="nb">false</span>
+bootstrap.system_call_filter: <span class="nb">false</span>  <span class="c1"># 默认这行是没有的，需要手动添加</span>
+</pre></div>
+
+<h4 id="head">安装head插件<a class="headerlink" href="#head" title="Permanent link">&para;</a></h4>
+<ul>
+<li>安装Node.js</li>
+</ul>
+<div class="codehilite"><pre><span></span>https://npm.taobao.org/mirrors/node   下载地址
+
+
+wget https://npm.taobao.org/mirrors/node/v10.15.0/node-v10.15.0-linux-x64.tar.xz
+
+tar -xf node-v10.15.0-linux-x64.tar.xz
+
+sudo mv node-v10.15.0-linux-x64/ /usr/local/node
+
+ 配置并生效
+
+sudo vim /etc/profile
+<span class="nb">export</span> <span class="nv">NODE_HOME</span><span class="o">=</span>/usr/local/node
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$NODE_HOME</span>/bin
+
+<span class="nb">source</span> /etc/profile
+
+查看版本验证
+yx@php:~/src/es$ node -v
+v10.15.0
+yx@php:~/src/es$ npm -v
+<span class="m">6</span>.4.1
+</pre></div>
+
+<ul>
+<li>下载head插件</li>
+</ul>
+<div class="codehilite"><pre><span></span>sudo apt-get install git -y
+
+git clone https://github.com/mobz/elasticsearch-head.git
+</pre></div>
+
+<ul>
+<li>设置淘宝仓库安装cnpm</li>
+</ul>
+<div class="codehilite"><pre><span></span>npm install -g cnpm --registry<span class="o">=</span>https://registry.npm.taobao.org
+</pre></div>
+
+<ul>
+<li>安装grunt</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1"># 进去刚才下载的head插件目录里面</span>
+<span class="nb">cd</span> elasticsearch-head/
+
+
+cnpm install    <span class="c1"># 安装各种依赖插件</span>
+</pre></div>
+
+<ul>
+<li>启动head插件服务</li>
+</ul>
+<div class="codehilite"><pre><span></span> 第一种启动方式:
+ 找对你的 elasticsearch-head/目录所在的路径
+
+进入到 /home/yx/server/elasticsearch-head-master 目录下然后启动
+<span class="c1">#后台启动</span>
+node_modules/grunt/bin/grunt server <span class="p">&amp;</span>
+  <span class="c1"># 查看是否启动</span>
+yx@php:~/src/es/elasticsearch-head/node_modules$ sudo netstat -lnp <span class="p">|</span> grep <span class="m">9100</span>
+tcp        <span class="m">0</span>      <span class="m">0</span> <span class="m">0</span>.0.0.0:9100            <span class="m">0</span>.0.0.0:*               LISTEN      <span class="m">8760</span>/grunt  
+
+关闭 ps aux <span class="p">|</span> grep grun  查出id,然后kill id
+
+第二种启动方式：
+npm run start <span class="p">&amp;</span>
+<span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="m">8807</span>
+yx@php:~/src/es/elasticsearch-head$
+&gt; elasticsearch-head@0.0.0 start /home/yx/src/es/elasticsearch-head
+&gt; grunt server
+
+Running <span class="s2">&quot;connect:server&quot;</span> <span class="o">(</span>connect<span class="o">)</span> task
+Waiting forever...
+Started connect web server on http://localhost:9100
+</pre></div>
+
+<h4 id="_3">浏览器验证<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><img alt="hello" src="img/es.png" title="title" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/cyent" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
