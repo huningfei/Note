@@ -585,7 +585,7 @@ vim /etc/security/limits.conf 在文件的末尾添加下面的参数值：
 <span class="nb">ulimit</span> -Hu
 <span class="nb">ulimit</span> -Su
 </pre></div>
-- [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</p>
+-  max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</p>
 <div class="codehilite"><pre><span></span>解决方案：切换到root用户修改配置sysctl.conf
 sudo vim /etc/sysctl.conf
 增加配置值： vm.max_map_count<span class="o">=</span><span class="m">655360</span>
